@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给你的一封情书</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            background: #FFB6C1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #ff1493;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #333;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .heart {
+            position: absolute;
+            top: -50px;
+            animation: fall linear infinite;
+            color: #ff1493;
+            font-size: 24px;
+        }
+
+        @keyframes fall {
+            to {
+                top: 100vh;
+            }
+        }
+
+        button {
+            background-color: #ff1493;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff69b4;
+        }
+
+        #secret-message {
+            display: none;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>亲爱的，这是给你的情书</h1>
+        <p>在时光长河中，与你相遇是我最美的意外。你的笑容如春日暖阳，照亮我生活的每一个角落；你的温柔似潺潺溪流，滋润我干涸的心田。每一次和你相处，都让我愈发坚信，你就是我一直在寻找的那个人。</p>
+        <button onclick="toggleContent()">看看我的心里话</button>
+        <p id="secret-message">其实，我想告诉你，我喜欢你，不仅仅是因为你的外表，更是因为你善良的内心、独特的灵魂。我希望能一直陪伴在你身边，和你一起经历生活的酸甜苦辣，一起创造属于我们的美好回忆。</p>
+    </div>
+
+    <script>
+        // 按钮事件
+        function toggleContent() {
+            const secretMessage = document.getElementById('secret-message');
+            secretMessage.style.display = 'block';
+        }
+
+        function createFallingHeart() {
+            const heart = document.createElement('span');
+            heart.classList.add('heart');
+            heart.textContent = '💖';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                document.body.removeChild(heart);
+            }, 5000);
+        }
+
+        setInterval(createFallingHeart, 500);
+    </script>
+</body>
+
+</html>
